@@ -40,8 +40,9 @@ public class WgetFile implements Runnable {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        String ln = System.lineSeparator();
         if (args.length != 3) {
-            throw new IllegalArgumentException("\n Correct usage: \n"
+            throw new IllegalArgumentException(ln + "Correct usage:" + ln
                     + "java -jar WgetFile.jar "
                     + "SOURCE_FILE_URL "
                     + "DEST_FILE.EXTENSION "
