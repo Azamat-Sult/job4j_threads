@@ -13,15 +13,7 @@ public final class Node<T> {
         return next;
     }
 
-    public Node<T> setNext(Node<T> next) {
-        return new Node<>(next, value);
-    }
-
     public T getValue() {
         return value;
-    }
-
-    public Node<T> setValue(T value) {
-        return new Node<>(next, value);
     }
 }
