@@ -53,8 +53,8 @@ public class UserStorageTest {
         third.join();
         last.join();
 
-        assertEquals(storage.getUserById(4).getAmount(), 1000);
-        assertEquals(storage.getUserById(1).getAmount(), 0);
-        assertEquals(storage.getUserById(2).getAmount(), 0);
+        assertEquals(storage.get(4).getAmount(), 1000);
+        assertEquals(storage.get(1).getAmount(), 0);
+        assertEquals(storage.get(2).getAmount(), 0);
     }
 }
