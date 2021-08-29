@@ -12,47 +12,27 @@ public class SimpleBlockingQueue<T> {
     private final Queue<T> queue = new LinkedList<>();
     private final int queueMaxSize;
 
-
     public SimpleBlockingQueue(int queueMaxSize) {
         this.queueMaxSize = queueMaxSize;
     }
 
-    public void offer(T value) {
+    public void offer(T value) throws InterruptedException {
         synchronized (monitor) {
             while (queue.size() == queueMaxSize) {
-                try {
-                    System.out.println("Queue is full! All producer threads in waiting state");
-                    monitor.wait();
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
+                monitor.wait();
             }
-            if (queue.size() == 0) {
-                System.out.println("Queue is empty! Notify all producer threads");
-                monitor.notifyAll();
-            }
+            monitor.notifyAll();
             queue.add(value);
-            System.out.println(Thread.currentThread().getName() + ": add " + value + " done");
         }
     }
 
-    public T poll() {
+    public T poll() throws InterruptedException {
         synchronized (monitor) {
             while (queue.size() == 0) {
-                try {
-                    System.out.println("Queue is empty! All consumer threads in waiting state");
-                    monitor.wait();
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
+                monitor.wait();
             }
-            if (queue.size() == queueMaxSize) {
-                System.out.println("Queue is full! Notify all consumer threads");
-                monitor.notifyAll();
-            }
-            T rsl = queue.poll();
-            System.out.println(Thread.currentThread().getName() + ": get " + rsl + " done");
-            return rsl;
+            monitor.notifyAll();
+            return queue.poll();
         }
     }
 

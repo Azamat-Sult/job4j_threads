@@ -14,7 +14,11 @@ public class SimpleBlockingQueueTest {
                 () -> {
                     System.out.println(Thread.currentThread().getName() + " start");
                     for (int index = 0; index < 10; index++) {
-                        sbQueue.offer(index);
+                        try {
+                            sbQueue.offer(index);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                     System.out.println(Thread.currentThread().getName() + " works done");
                 },
@@ -34,7 +38,11 @@ public class SimpleBlockingQueueTest {
         Thread consumer = new Thread(
                 () -> {
                     System.out.println(Thread.currentThread().getName() + " start");
-                    sbQueue.poll();
+                    try {
+                        sbQueue.poll();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     System.out.println(Thread.currentThread().getName() + " works done");
                 },
                 "Consumer"
@@ -54,7 +62,11 @@ public class SimpleBlockingQueueTest {
                 () -> {
                     System.out.println(Thread.currentThread().getName() + " start");
                     for (int index = 0; index < 4; index++) {
-                        sbQueue.offer(index);
+                        try {
+                            sbQueue.offer(index);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                     System.out.println(Thread.currentThread().getName() + " works done");
                 },
@@ -65,7 +77,11 @@ public class SimpleBlockingQueueTest {
                 () -> {
                     System.out.println(Thread.currentThread().getName() + " start");
                     for (int index = 0; index < 4; index++) {
-                        sbQueue.offer(index);
+                        try {
+                            sbQueue.offer(index);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                     System.out.println(Thread.currentThread().getName() + " works done");
                 },
@@ -76,7 +92,11 @@ public class SimpleBlockingQueueTest {
                 () -> {
                     System.out.println(Thread.currentThread().getName() + " start");
                     for (int index = 0; index < 4; index++) {
-                        sbQueue.poll();
+                        try {
+                            sbQueue.poll();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                     System.out.println(Thread.currentThread().getName() + " works done");
                 },
@@ -87,7 +107,11 @@ public class SimpleBlockingQueueTest {
                 () -> {
                     System.out.println(Thread.currentThread().getName() + " start");
                     for (int index = 0; index < 4; index++) {
-                        sbQueue.poll();
+                        try {
+                            sbQueue.poll();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                     System.out.println(Thread.currentThread().getName() + " works done");
                 },
