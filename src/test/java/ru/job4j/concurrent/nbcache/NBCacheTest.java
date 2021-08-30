@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class NBCacheTest {
 
     @Test
-    public void WhenAddThenGet() {
+    public void whenAddThenGet() {
         NBCache cache = new NBCache();
         Base base = new Base(1, 0);
         boolean rsl = cache.add(base);
@@ -16,7 +16,7 @@ public class NBCacheTest {
     }
 
     @Test
-    public void WhenAddThenExist() {
+    public void whenAddThenExist() {
         NBCache cache = new NBCache();
         Base base1 = new Base(1, 0);
         Base base2 = new Base(1, 10);
@@ -27,7 +27,7 @@ public class NBCacheTest {
     }
 
     @Test(expected = OptimisticException.class)
-    public void WhenVersionsNotEqualAndUpdateThenException() {
+    public void whenVersionsNotEqualAndUpdateThenException() {
         NBCache cache = new NBCache();
         Base base1 = new Base(1, 0);
         Base base2 = new Base(1, 10);
@@ -36,7 +36,7 @@ public class NBCacheTest {
     }
 
     @Test
-    public void WhenUpdateThenVersionIncAndNameUpdated() {
+    public void whenUpdateThenVersionIncAndNameUpdated() {
         NBCache cache = new NBCache();
         Base base1 = new Base(1, 0);
         base1.setName("old base");
@@ -49,7 +49,7 @@ public class NBCacheTest {
     }
 
     @Test
-    public void WhenDeleteThenDeleted() {
+    public void whenDeleteThenDeleted() {
         NBCache cache = new NBCache();
         Base base1 = new Base(1, 0);
         assertTrue(cache.add(base1));
