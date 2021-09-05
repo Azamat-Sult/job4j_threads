@@ -18,12 +18,13 @@ public class FindObjectIndexInArray extends RecursiveTask<Integer> {
 
     @Override
     protected Integer compute() {
-        if (from == to) {
-            if (array[from].equals(findObject)) {
-                return from;
-            } else {
-                return -1;
+        if (to - from <= 10) {
+            for (int index = from; index <= to; index++) {
+                if (array[index].equals(findObject)) {
+                    return index;
+                }
             }
+            return -1;
         }
         int mid = (from + to) / 2;
         FindObjectIndexInArray leftFind = new FindObjectIndexInArray(array, from, mid, findObject);
@@ -32,19 +33,11 @@ public class FindObjectIndexInArray extends RecursiveTask<Integer> {
         rightFind.fork();
         int rslLeft = leftFind.join();
         int rslRight = rightFind.join();
-        int rsl = -1;
-        if (rslLeft != -1) {
-            rsl = rslLeft;
-        }
-        if (rslRight != -1) {
-            rsl = rslRight;
-        }
-        return rsl;
+        return Math.max(rslLeft, rslRight);
     }
 
     public static void main(String[] args) {
-
-        int arraySize = 1000000;
+        int arraySize = 1_000_000;
         Obj[] array = new Obj[arraySize];
 
         for (int i = 0; i < arraySize; i++) {
