@@ -37,22 +37,22 @@ public class RolColSum {
         int rowSum;
         int columnSum;
         Sums[] rsl = new Sums[matrix.length];
-        for (int index1 = 0; index1 < matrix.length; index1++) {
+        for (int i = 0; i < matrix.length; i++) {
             rowSum = 0;
             columnSum = 0;
-            for (int index2 = 0; index2 < matrix.length; index2++) {
-                rowSum += matrix[index1][index2];
-                columnSum += matrix[index2][index1];
+            for (int j = 0; j < matrix.length; j++) {
+                rowSum += matrix[i][j];
+                columnSum += matrix[j][i];
             }
-            rsl[index1] = new Sums(rowSum, columnSum);
+            rsl[i] = new Sums(rowSum, columnSum);
         }
         return rsl;
     }
 
     public static Sums[] asyncSum(int[][] matrix) throws ExecutionException, InterruptedException {
         Sums[] rsl = new Sums[matrix.length];
-        for (int index = 0; index < matrix.length; index++) {
-            rsl[index] = calcSum(matrix, index).get();
+        for (int i = 0; i < matrix.length; i++) {
+            rsl[i] = calcSum(matrix, i).get();
         }
         return rsl;
     }
