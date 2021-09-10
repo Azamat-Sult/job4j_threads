@@ -2,11 +2,3 @@
 [![codecov](https://codecov.io/gh/Azamat-Sult/job4j_threads/branch/master/graph/badge.svg?token=9G700OH1JV)](https://codecov.io/gh/Azamat-Sult/job4j_threads)
 
 # job4j_threads
-
-Объединение зафиксированных изменений
-(повторно)
-Новые изменения
-
-В курсе производилась работа с ветками git.
-
-Создана ветка с именем task_124176
